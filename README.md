@@ -1,4 +1,4 @@
-# ghidractl
+# GhidraCtl
 
 A Python library and CLI tool to effortlessly install, manage, and automate Ghidra environments.
 
