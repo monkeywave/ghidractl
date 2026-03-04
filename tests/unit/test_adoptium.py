@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-import pytest
-
 from ghidractl.java.adoptium import build_download_url
-from ghidractl.platform import Arch, OS, Platform
+from ghidractl.platform import OS, Arch, Platform
 
 
 class TestBuildDownloadUrl:

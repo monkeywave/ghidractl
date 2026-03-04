@@ -12,7 +12,7 @@ from ghidractl.platform import Paths
 
 
 @pytest.fixture
-def registry(tmp_paths: "Paths") -> VersionRegistry:
+def registry(tmp_paths: Paths) -> VersionRegistry:
     tmp_paths.ensure_dirs()
     return VersionRegistry(paths=tmp_paths)
 
@@ -24,7 +24,7 @@ class TestVersionRegistry:
         assert registry.list_installed() == []
         assert registry.active_version is None
 
-    def test_register_version(self, registry: VersionRegistry, tmp_paths: "Paths") -> None:
+    def test_register_version(self, registry: VersionRegistry, tmp_paths: Paths) -> None:
         path = tmp_paths.installs_dir / "11.3"
         path.mkdir(parents=True)
         registry.register("11.3", path, installed_at="2025-01-15T00:00:00Z")
@@ -35,7 +35,7 @@ class TestVersionRegistry:
         assert installed[0].install_path == path
         assert registry.active_version == "11.3"
 
-    def test_register_sets_active(self, registry: VersionRegistry, tmp_paths: "Paths") -> None:
+    def test_register_sets_active(self, registry: VersionRegistry, tmp_paths: Paths) -> None:
         p1 = tmp_paths.installs_dir / "11.2"
         p1.mkdir(parents=True)
         registry.register("11.2", p1)
@@ -46,7 +46,7 @@ class TestVersionRegistry:
 
         assert registry.active_version == "11.3"
 
-    def test_get_installed(self, registry: VersionRegistry, tmp_paths: "Paths") -> None:
+    def test_get_installed(self, registry: VersionRegistry, tmp_paths: Paths) -> None:
         path = tmp_paths.installs_dir / "11.3"
         path.mkdir(parents=True)
         registry.register("11.3", path)
@@ -58,7 +58,7 @@ class TestVersionRegistry:
         with pytest.raises(NotInstalledError):
             registry.get("99.0")
 
-    def test_unregister(self, registry: VersionRegistry, tmp_paths: "Paths") -> None:
+    def test_unregister(self, registry: VersionRegistry, tmp_paths: Paths) -> None:
         path = tmp_paths.installs_dir / "11.3"
         path.mkdir(parents=True)
         registry.register("11.3", path)
@@ -67,7 +67,7 @@ class TestVersionRegistry:
         assert not registry.is_installed("11.3")
         assert registry.active_version is None
 
-    def test_unregister_switches_active(self, registry: VersionRegistry, tmp_paths: "Paths") -> None:
+    def test_unregister_switches_active(self, registry: VersionRegistry, tmp_paths: Paths) -> None:
         p1 = tmp_paths.installs_dir / "11.2"
         p1.mkdir(parents=True)
         registry.register("11.2", p1)
@@ -83,7 +83,7 @@ class TestVersionRegistry:
         with pytest.raises(NotInstalledError):
             registry.unregister("99.0")
 
-    def test_set_active(self, registry: VersionRegistry, tmp_paths: "Paths") -> None:
+    def test_set_active(self, registry: VersionRegistry, tmp_paths: Paths) -> None:
         p1 = tmp_paths.installs_dir / "11.2"
         p1.mkdir(parents=True)
         registry.register("11.2", p1)
@@ -99,7 +99,7 @@ class TestVersionRegistry:
         with pytest.raises(NotInstalledError):
             registry.set_active("99.0")
 
-    def test_is_installed(self, registry: VersionRegistry, tmp_paths: "Paths") -> None:
+    def test_is_installed(self, registry: VersionRegistry, tmp_paths: Paths) -> None:
         assert not registry.is_installed("11.3")
         path = tmp_paths.installs_dir / "11.3"
         path.mkdir(parents=True)
@@ -110,7 +110,7 @@ class TestVersionRegistry:
         with pytest.raises(NoVersionInstalledError):
             registry.get_active()
 
-    def test_persistence(self, tmp_paths: "Paths") -> None:
+    def test_persistence(self, tmp_paths: Paths) -> None:
         """Registry data persists across instances."""
         tmp_paths.ensure_dirs()
         reg1 = VersionRegistry(paths=tmp_paths)
@@ -122,13 +122,13 @@ class TestVersionRegistry:
         assert reg2.is_installed("11.3")
         assert reg2.active_version == "11.3"
 
-    def test_jdk_path(self, registry: VersionRegistry, tmp_paths: "Paths") -> None:
+    def test_jdk_path(self, registry: VersionRegistry, tmp_paths: Paths) -> None:
         assert registry.jdk_path is None
         jdk = tmp_paths.jdk_dir / "jdk-21"
         registry.set_jdk_path(jdk)
         assert registry.jdk_path == jdk
 
-    def test_ghidra_dir(self, registry: VersionRegistry, tmp_paths: "Paths") -> None:
+    def test_ghidra_dir(self, registry: VersionRegistry, tmp_paths: Paths) -> None:
         path = tmp_paths.installs_dir / "11.3"
         path.mkdir(parents=True)
         ghidra = path / "ghidra_11.3_PUBLIC"

@@ -9,19 +9,15 @@ import shutil
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
 
 from ghidractl.errors import (
     AlreadyInstalledError,
-    DownloadError,
     GhidraError,
-    NotInstalledError,
 )
 from ghidractl.ghidra.registry import VersionRegistry
-from ghidractl.ghidra.version_map import required_jdk
 from ghidractl.net.client import HttpClient
 from ghidractl.net.download import ProgressCallback, download_file
-from ghidractl.net.github import GhidraRelease, fetch_release
+from ghidractl.net.github import fetch_release
 from ghidractl.platform import Paths, Platform
 
 logger = logging.getLogger(__name__)
@@ -105,7 +101,11 @@ async def _install_async(
 
         # 6. Verify SHA-256 if available
         if release.sha256 is None:
-            logger.warning("No SHA-256 hash in release notes for Ghidra %s — skipping verification", release.version)
+            logger.warning(
+                "No SHA-256 hash in release notes for Ghidra %s"
+                " — skipping verification",
+                release.version,
+            )
 
         # 7. Register
         registry.register(

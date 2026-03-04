@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Optional
 
 import typer
 
@@ -12,7 +11,7 @@ from ghidractl.errors import GhidractlError
 
 
 def settings_backup(
-    output: Optional[Path] = typer.Option(None, "--out", "-o", help="Output ZIP file path."),
+    output: Path | None = typer.Option(None, "--out", "-o", help="Output ZIP file path."),
 ) -> None:
     """Backup Ghidra user settings."""
     from ghidractl.ghidra.settings import backup_settings

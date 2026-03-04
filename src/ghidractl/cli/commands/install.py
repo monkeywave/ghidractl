@@ -3,14 +3,12 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Optional
 
 import typer
 
 from ghidractl.cli.formatters import (
     console,
     create_download_progress,
-    make_progress_callback,
     print_error,
     print_success,
 )
@@ -18,8 +16,11 @@ from ghidractl.errors import AlreadyInstalledError, GhidractlError
 
 
 def install(
-    version: str = typer.Argument("latest", help="Ghidra version to install (e.g., '11.3' or 'latest')."),
-    install_path: Optional[str] = typer.Option(
+    version: str = typer.Argument(
+        "latest",
+        help="Ghidra version to install (e.g., '11.3' or 'latest').",
+    ),
+    install_path: str | None = typer.Option(
         None, "--install-path", "-p",
         help="Custom directory for Ghidra installations.",
     ),

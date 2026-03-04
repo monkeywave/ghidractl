@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+# Re-export java submodule for `ghidractl.java.check()` etc.
+from ghidractl import java  # noqa: F401
 from ghidractl._version import __version__
 from ghidractl.ghidra.installer import install, uninstall, update
 from ghidractl.ghidra.launcher import launch
@@ -11,9 +13,6 @@ from ghidractl.ghidra.registry import InstalledVersion, VersionRegistry
 from ghidractl.ghidra.releases import get_release, latest_version, list_versions
 from ghidractl.net.github import GhidraRelease
 from ghidractl.platform import Paths
-
-# Re-export java submodule for `ghidractl.java.check()` etc.
-from ghidractl import java  # noqa: F401
 
 
 def installed(paths: Paths | None = None) -> list[InstalledVersion]:

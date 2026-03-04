@@ -4,10 +4,9 @@ from __future__ import annotations
 
 import os
 import subprocess
-import sys
 from pathlib import Path
 
-from ghidractl.errors import JavaNotFoundError, LaunchError
+from ghidractl.errors import LaunchError
 from ghidractl.ghidra.registry import VersionRegistry
 from ghidractl.ghidra.version_map import required_jdk
 from ghidractl.java.detector import find_compatible_java

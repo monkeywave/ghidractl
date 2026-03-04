@@ -4,8 +4,19 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from ghidractl.java.detector import JavaInstallation, detect_java, find_compatible_java
-from ghidractl.java.installer import get_managed_jdk, install_jdk
+from ghidractl.java.detector import (
+    JavaInstallation,
+    detect_java,
+)
+from ghidractl.java.detector import (
+    find_compatible_java as find_compatible_java,
+)
+from ghidractl.java.installer import (
+    get_managed_jdk as get_managed_jdk,
+)
+from ghidractl.java.installer import (
+    install_jdk,
+)
 from ghidractl.java.validator import validate_java
 
 

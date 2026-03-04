@@ -2,12 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 import typer
 
-from ghidractl.cli.formatters import console, print_error, print_success
-from ghidractl.errors import GhidractlError
+from ghidractl.cli.formatters import console, print_success
 
 
 def config_show() -> None:

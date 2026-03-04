@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import pytest
-
 from ghidractl.ghidra.version_map import is_jdk_compatible, recommended_jdk, required_jdk
 
 

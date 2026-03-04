@@ -36,24 +36,27 @@ def _version_callback(value: bool) -> None:
 @app.callback()
 def main(
     version: bool = typer.Option(
-        False, "--version", "-V", help="Show version and exit.", callback=_version_callback, is_eager=True,
+        False, "--version", "-V",
+        help="Show version and exit.",
+        callback=_version_callback,
+        is_eager=True,
     ),
 ) -> None:
     """ghidractl - Ghidra installation manager."""
 
 
 # Import and register commands
+from ghidractl.cli.commands.config_cmd import config_set, config_show  # noqa: E402
+from ghidractl.cli.commands.extensions import ext_install, ext_list, ext_uninstall  # noqa: E402
 from ghidractl.cli.commands.install import install  # noqa: E402
+from ghidractl.cli.commands.java_cmd import java_check, java_guide, java_install  # noqa: E402
 from ghidractl.cli.commands.list_cmd import list_cmd  # noqa: E402
-from ghidractl.cli.commands.use import use  # noqa: E402
-from ghidractl.cli.commands.run import run  # noqa: E402
-from ghidractl.cli.commands.update import update  # noqa: E402
-from ghidractl.cli.commands.uninstall import uninstall  # noqa: E402
 from ghidractl.cli.commands.locate import locate  # noqa: E402
-from ghidractl.cli.commands.java_cmd import java_check, java_install, java_guide  # noqa: E402
-from ghidractl.cli.commands.extensions import ext_list, ext_install, ext_uninstall  # noqa: E402
+from ghidractl.cli.commands.run import run  # noqa: E402
 from ghidractl.cli.commands.settings import settings_backup, settings_restore  # noqa: E402
-from ghidractl.cli.commands.config_cmd import config_show, config_set  # noqa: E402
+from ghidractl.cli.commands.uninstall import uninstall  # noqa: E402
+from ghidractl.cli.commands.update import update  # noqa: E402
+from ghidractl.cli.commands.use import use  # noqa: E402
 
 app.command(name="install")(install)
 app.command(name="list")(list_cmd)

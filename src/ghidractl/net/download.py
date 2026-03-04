@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 import hashlib
+from collections.abc import Callable
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 from ghidractl.errors import ChecksumMismatchError, DownloadError
 
@@ -60,7 +61,7 @@ async def download_file(
         # Clean up partial download
         if dest.exists():
             dest.unlink()
-        if isinstance(exc, (ChecksumMismatchError, DownloadError)):
+        if isinstance(exc, ChecksumMismatchError | DownloadError):
             raise
         raise DownloadError(f"Download failed: {exc}") from exc
 

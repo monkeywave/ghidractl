@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 import typer
 
 from ghidractl.cli.formatters import print_error
@@ -11,7 +9,7 @@ from ghidractl.errors import GhidractlError
 
 
 def locate(
-    version: Optional[str] = typer.Argument(None, help="Ghidra version (uses active if omitted)."),
+    version: str | None = typer.Argument(None, help="Ghidra version (uses active if omitted)."),
 ) -> None:
     """Print the install path of a Ghidra version."""
     from ghidractl.ghidra.registry import VersionRegistry

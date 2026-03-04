@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import asyncio
-from typing import Any
 
 from ghidractl.net.client import HttpClient
 from ghidractl.net.github import GhidraRelease, fetch_release, fetch_releases

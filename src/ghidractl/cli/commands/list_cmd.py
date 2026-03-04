@@ -4,12 +4,20 @@ from __future__ import annotations
 
 import typer
 
-from ghidractl.cli.formatters import console, print_error, print_installed_table, print_version_table
+from ghidractl.cli.formatters import (
+    console,
+    print_error,
+    print_installed_table,
+    print_version_table,
+)
 from ghidractl.errors import GhidractlError
 
 
 def list_cmd(
-    all_versions: bool = typer.Option(False, "--all", "-a", help="Show all available versions from GitHub."),
+    all_versions: bool = typer.Option(
+        False, "--all", "-a",
+        help="Show all available versions from GitHub.",
+    ),
 ) -> None:
     """List Ghidra versions."""
     from ghidractl.ghidra.registry import VersionRegistry

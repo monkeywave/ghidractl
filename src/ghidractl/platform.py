@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import platform as _platform
-import sys
 from enum import Enum
 from pathlib import Path
 
@@ -110,7 +109,12 @@ class Paths:
 
     APP_NAME = "ghidractl"
 
-    def __init__(self, data_dir: Path | None = None, config_dir: Path | None = None, installs_dir: Path | None = None) -> None:
+    def __init__(
+        self,
+        data_dir: Path | None = None,
+        config_dir: Path | None = None,
+        installs_dir: Path | None = None,
+    ) -> None:
         self._data_dir = data_dir or user_data_path(self.APP_NAME)
         self._config_dir = config_dir or user_config_path(self.APP_NAME)
         self._installs_dir = installs_dir

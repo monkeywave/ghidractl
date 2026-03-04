@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from pathlib import Path
 from typing import TYPE_CHECKING
 
 from rich.console import Console
@@ -42,7 +41,7 @@ def print_info(message: str) -> None:
 
 
 def print_version_table(
-    releases: list["GhidraRelease"],
+    releases: list[GhidraRelease],
     installed_versions: set[str] | None = None,
     active_version: str | None = None,
 ) -> None:
@@ -74,7 +73,7 @@ def print_version_table(
 
 
 def print_installed_table(
-    installed: list["InstalledVersion"],
+    installed: list[InstalledVersion],
     active_version: str | None = None,
 ) -> None:
     """Print a table of installed Ghidra versions."""
@@ -90,12 +89,13 @@ def print_installed_table(
 
     for v in installed:
         active = "[bold green]*[/]" if v.version == active_version else ""
-        table.add_row(v.version, active, str(v.ghidra_path), v.installed_at[:10] if v.installed_at else "")
+        date = v.installed_at[:10] if v.installed_at else ""
+        table.add_row(v.version, active, str(v.ghidra_path), date)
 
     console.print(table)
 
 
-def print_java_status(java: "JavaInstallation | None") -> None:
+def print_java_status(java: JavaInstallation | None) -> None:
     """Print Java installation status."""
     if java is None:
         panel = Panel(

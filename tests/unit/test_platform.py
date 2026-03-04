@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 import pytest
 
-from ghidractl.platform import Arch, OS, Paths, Platform
+from ghidractl.platform import OS, Arch, Paths, Platform
 
 
 class TestPlatformDetect:

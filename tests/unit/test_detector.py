@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import pytest
-
 from ghidractl.java.detector import parse_java_version
 
 

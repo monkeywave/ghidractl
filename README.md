@@ -1,5 +1,10 @@
 # GhidraCtl
 
+[![PyPI version](https://badge.fury.io/py/ghidractl.svg)](https://badge.fury.io/py/ghidractl)
+[![Publish status](https://github.com/monkeywave/ghidractl/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/monkeywave/ghidractl/actions/workflows/publish.yml)
+[![Lint](https://github.com/monkeywave/ghidractl/actions/workflows/lint.yml/badge.svg)](https://github.com/monkeywave/ghidractl/actions/workflows/lint.yml)
+[![Tests](https://github.com/monkeywave/ghidractl/actions/workflows/test.yml/badge.svg)](https://github.com/monkeywave/ghidractl/actions/workflows/test.yml)
+
 A Python library and CLI tool to effortlessly install, manage, and automate Ghidra environments.
 
 Install, update, and manage multiple [Ghidra](https://ghidra-sre.org/) versions from the command line — or use it as an importable library in your Python tools.

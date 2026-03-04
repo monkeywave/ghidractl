@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import asyncio
 from dataclasses import dataclass
-from typing import Any
 
 from ghidractl.net.client import HttpClient
 from ghidractl.platform import Platform

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Optional
 
 import typer
 
@@ -12,7 +11,10 @@ from ghidractl.errors import GhidractlError
 
 
 def ext_list(
-    ghidra_version: Optional[str] = typer.Option(None, "--ghidra", help="Ghidra version (uses active if omitted)."),
+    ghidra_version: str | None = typer.Option(
+        None, "--ghidra",
+        help="Ghidra version (uses active if omitted).",
+    ),
 ) -> None:
     """List installed extensions."""
     from rich.table import Table
@@ -44,7 +46,7 @@ def ext_list(
 
 def ext_install(
     path: Path = typer.Argument(help="Path to extension ZIP file."),
-    ghidra_version: Optional[str] = typer.Option(None, "--ghidra", help="Ghidra version."),
+    ghidra_version: str | None = typer.Option(None, "--ghidra", help="Ghidra version."),
 ) -> None:
     """Install a Ghidra extension from a ZIP file."""
     from ghidractl.ghidra.extensions import install_extension
@@ -59,7 +61,7 @@ def ext_install(
 
 def ext_uninstall(
     name: str = typer.Argument(help="Extension name to remove."),
-    ghidra_version: Optional[str] = typer.Option(None, "--ghidra", help="Ghidra version."),
+    ghidra_version: str | None = typer.Option(None, "--ghidra", help="Ghidra version."),
 ) -> None:
     """Uninstall a Ghidra extension."""
     from ghidractl.ghidra.extensions import uninstall_extension

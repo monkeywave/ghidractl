@@ -6,12 +6,12 @@ import asyncio
 import shutil
 import tarfile
 import zipfile
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable
 
 from ghidractl.errors import JavaInstallError
 from ghidractl.ghidra.registry import VersionRegistry
-from ghidractl.java.adoptium import AdoptiumRelease, _get_download_info_async
+from ghidractl.java.adoptium import _get_download_info_async
 from ghidractl.net.client import HttpClient
 from ghidractl.net.download import download_file
 from ghidractl.platform import OS, Paths, Platform
