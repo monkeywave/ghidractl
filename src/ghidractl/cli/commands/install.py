@@ -21,7 +21,9 @@ def install(
         help="Ghidra version to install (e.g., '11.3' or 'latest').",
     ),
     install_path: str | None = typer.Option(
-        None, "--install-path", "-p",
+        None,
+        "--install-path",
+        "-p",
         help="Custom directory for Ghidra installations.",
     ),
 ) -> None:
@@ -40,9 +42,7 @@ def install(
             resolved_path = Path(cfg.install_path)
         else:
             default_path = Paths().installs_dir
-            user_input = console.input(
-                f"Install directory [dim]\\[{default_path}][/]: "
-            ).strip()
+            user_input = console.input(f"Install directory [dim]\\[{default_path}][/]: ").strip()
             if user_input:
                 resolved_path = Path(user_input)
 

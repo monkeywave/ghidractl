@@ -41,9 +41,7 @@ async def _install_jdk_async(
 
     try:
         # 1. Get download info
-        release = await _get_download_info_async(
-            version=version, platform=platform, client=client
-        )
+        release = await _get_download_info_async(version=version, platform=platform, client=client)
 
         # 2. Download
         paths.ensure_dirs()

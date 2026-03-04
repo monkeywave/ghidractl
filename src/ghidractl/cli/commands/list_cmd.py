@@ -15,7 +15,9 @@ from ghidractl.errors import GhidractlError
 
 def list_cmd(
     all_versions: bool = typer.Option(
-        False, "--all", "-a",
+        False,
+        "--all",
+        "-a",
         help="Show all available versions from GitHub.",
     ),
 ) -> None:

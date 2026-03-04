@@ -87,4 +87,5 @@ class TestParseRelease:
     def test_parsed_version(self, releases_data: list[dict]) -> None:
         rel = parse_release(releases_data[0])
         from packaging.version import Version
+
         assert rel.parsed_version == Version("11.3")

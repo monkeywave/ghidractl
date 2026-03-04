@@ -54,6 +54,7 @@ def launch(
         managed_jdk = registry.jdk_path
         if managed_jdk and managed_jdk.exists():
             from ghidractl.java.detector import _check_java_at
+
             java = _check_java_at(managed_jdk, platform)
 
     env = os.environ.copy()

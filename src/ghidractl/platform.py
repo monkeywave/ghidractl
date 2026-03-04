@@ -11,6 +11,7 @@ from platformdirs import user_config_path, user_data_path
 
 class OS(Enum):
     """Supported operating systems."""
+
     MACOS = "mac"
     LINUX = "linux"
     WINDOWS = "windows"
@@ -23,6 +24,7 @@ class OS(Enum):
 
 class Arch(Enum):
     """Supported CPU architectures."""
+
     X86_64 = "x64"
     ARM64 = "aarch64"
 

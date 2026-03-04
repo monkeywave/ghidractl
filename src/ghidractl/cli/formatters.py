@@ -130,7 +130,9 @@ def create_download_progress() -> Progress:
 
 def make_progress_callback(progress: Progress, task_id: int):
     """Create a callback function for download progress updates."""
+
     def callback(downloaded: int, total: int) -> None:
         if total > 0:
             progress.update(task_id, completed=downloaded, total=total)
+
     return callback

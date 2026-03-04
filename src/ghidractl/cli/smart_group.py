@@ -52,9 +52,6 @@ class SmartGroup(TyperGroup):
                 prog_name = ctx.command_path
                 hint_lines = [f"  {prog_name} {s}" for s in suggestions]
                 hint = "\n".join(hint_lines)
-                ctx.fail(
-                    f"No such command '{cmd_name}'.\n\n"
-                    f"Did you mean:\n{hint}"
-                )
+                ctx.fail(f"No such command '{cmd_name}'.\n\nDid you mean:\n{hint}")
             else:
                 ctx.fail(f"No such command '{cmd_name}'.")

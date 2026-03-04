@@ -28,6 +28,7 @@ def config_show() -> None:
         # Show effective default for empty install_path
         if key == "install_path" and not value:
             from ghidractl.platform import Paths
+
             default_dir = Paths().installs_dir
             display_value = f"(default: {default_dir})"
         table.add_row(key, display_value)

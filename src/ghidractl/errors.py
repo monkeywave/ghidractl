@@ -9,6 +9,7 @@ class GhidractlError(Exception):
 
 # --- Network errors ---
 
+
 class NetworkError(GhidractlError):
     """Base for network-related errors."""
 
@@ -46,6 +47,7 @@ class RateLimitError(GitHubAPIError):
 
 
 # --- Ghidra errors ---
+
 
 class GhidraError(GhidractlError):
     """Base for Ghidra-related errors."""
@@ -92,6 +94,7 @@ class LaunchError(GhidraError):
 
 # --- Java errors ---
 
+
 class JavaError(GhidractlError):
     """Base for Java-related errors."""
 
@@ -121,6 +124,7 @@ class JavaInstallError(JavaError):
 
 
 # --- Config errors ---
+
 
 class ConfigError(GhidractlError):
     """Configuration file error."""

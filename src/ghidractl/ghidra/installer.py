@@ -61,9 +61,7 @@ async def _install_async(
         # 3. Find platform asset (falls back to universal ZIP via default_asset)
         asset = release.asset_for_platform(platform.ghidra_release_suffix)
         if asset is None:
-            raise GhidraError(
-                f"No downloadable ZIP asset found in Ghidra {release.version}"
-            )
+            raise GhidraError(f"No downloadable ZIP asset found in Ghidra {release.version}")
 
         # 4. Download
         paths.ensure_dirs()
@@ -102,8 +100,7 @@ async def _install_async(
         # 6. Verify SHA-256 if available
         if release.sha256 is None:
             logger.warning(
-                "No SHA-256 hash in release notes for Ghidra %s"
-                " — skipping verification",
+                "No SHA-256 hash in release notes for Ghidra %s — skipping verification",
                 release.version,
             )
 

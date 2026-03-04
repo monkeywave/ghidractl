@@ -12,7 +12,8 @@ from ghidractl.errors import GhidractlError
 
 def ext_list(
     ghidra_version: str | None = typer.Option(
-        None, "--ghidra",
+        None,
+        "--ghidra",
         help="Ghidra version (uses active if omitted).",
     ),
 ) -> None:
